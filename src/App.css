@@ -1,63 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
 body {
-  font-family: 'Inter', 'Roboto', sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   background-color: #0D1117;
   color: #D1D5DB;
-  /* padding: 20px; */
 }
 
-h1,
-h2,
-h3,
-nav {
+h1, h2, h3, .font-mono {
   font-family: 'JetBrains Mono', monospace;
-  /* color: oklch(87.629% 0.22777 152.572); */
 }
 
-nav ul li:hover {
-  text-shadow: 3px 3px 15px oklch(87.629% 0.22777 152.572);
+html {
+  scroll-behavior: smooth;
 }
-
-
-
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */

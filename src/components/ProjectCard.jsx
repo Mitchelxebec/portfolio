@@ -1,62 +1,70 @@
-import React from "react";
-
 function ProjectCard({ project }) {
-    // Set color based on technology
-    let techColor = "";
-    if (project.technologies === "JavaScript") {
-        techColor = "text-[#00CFFF] border-[#00CFFF]";
-    } else if (project.technologies === "HTML/CSS") {
-        techColor = "text-[#FF3CAC] border-[#FF3CAC]";
-    } else {
-        techColor = "text-[#0D1117] border-[#0D1117]";
-    }
-
-    // For hover effect
-    const glowColors = {
-        JavaScript: "hover:shadow-[0_0_20px_rgba(0,207,255,0.8)] hover:text-[#00CFFF] hover:border-[#00CFFF]",
-        "HTML/CSS": "hover:shadow-[0_0_20px_rgba(255,60,172,0.8)] hover:text-[#FF3CAC] hover:border-[#FF3CAC]",
-        Default: "hover:shadow-[0_0_20px_rgba(13,17,23,0.8)] hover:text-[#0D1117] hover:border-[#0D1117]",
-    };
-
-    const techClass = glowColors[project.technologies] || glowColors.Default;
-
     return (
-        <div className="flex flex-col border-2 border-gray-800 rounded-xl 
-                                            p-3 sm:p-6 md:p-8 
-                                            w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
-        >
+        <div className="group flex flex-col bg-[#0d1117] border border-gray-700 rounded-2xl p-6
+                        transition-all duration-300 hover:border-green-500
+                        hover:shadow-[0_0_24px_rgba(34,197,94,0.15)]">
+
+            {/* Top accent bar */}
+            <div className="w-10 h-1 bg-green-500 rounded-full mb-4
+                            group-hover:w-16 transition-all duration-300" />
 
             {/* Project Name */}
-            <h3 className="text-sm sm:text-lg md:text-xl font-bold mb-3 text-green-500">
+            <h3 className="text-lg font-bold mb-3 text-white group-hover:text-green-400 transition-colors duration-300">
                 {project.name}
             </h3>
 
-            {/* Project Description */}
-            <p className="mb-4 text-xs sm:text-sm md:text-base text-gray-300">
+            {/* Description */}
+            <p className="text-sm text-gray-400 leading-relaxed mb-5 flex-1">
                 {project.description}
             </p>
 
-            <div className="mt-auto  flex flex-col items-center gap-3">
-                {/* Tech Button */}
-                <button
-                    className={`mt-2 border rounded-2xl transition-all duration-300
-                    w-full sm:w-auto
-                    px-3 py-1 text-xs
-                    sm:px-4 sm:py-2 sm:text-sm
-                    md:px-6 md:py-3 md:text-base
-                    ${techColor} ${techClass}`}
-                >
-                    {project.technologies}
-                </button>
-                {/* Project Link */}
+            {/* Tech tags */}
+            <div className="flex flex-wrap gap-2 mb-5">
+                {project.technologies.split(",").map(tech => (
+                    <span
+                        key={tech.trim()}
+                        className="text-xs px-2 py-1 rounded-md bg-gray-800 text-amber-300 border border-gray-700"
+                    >
+                        {tech.trim()}
+                    </span>
+                ))}
+            </div>
+
+            {/* Links */}
+            <div className="flex items-center gap-4 mt-auto">
                 <a
-                    className="text-blue-500 underline inline-block mt-4
-                   text-xs sm:text-sm sm:block md:text-base"
-                    href={project.link}
+                    href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-blue-400
+                               hover:text-blue-300 transition-colors duration-200 font-medium"
                 >
-                    View Project
+                    Live Demo
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round"
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                </a>
+                <span className="text-gray-700">|</span>
+                <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-gray-400
+                               hover:text-white transition-colors duration-200 font-medium"
+                >
+                    Source
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483
+                            0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466
+                            -.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832
+                            .092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688
+                            -.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844
+                            c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651
+                            .64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855
+                            0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                    </svg>
                 </a>
             </div>
         </div>
