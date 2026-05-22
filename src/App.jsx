@@ -3,6 +3,7 @@ import Header from './components/Header'
 import Project from './components/Projects'
 import SkillBadge from './components/SkillBadge'
 import Footer from './components/Footer'
+import profilePic from './assets/removedBg.png'
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <div className="shrink-0 relative">
             <div className="absolute inset-0 rounded-full bg-green-500 blur-2xl opacity-20 scale-110" />
             <img
-              src="../src/assets/removedBg.png"
+              src={profilePic}
               className="relative h-44 w-44 sm:h-56 sm:w-56 border-2 border-green-500 rounded-full object-cover"
               alt="Mitchel Okoh"
             />
